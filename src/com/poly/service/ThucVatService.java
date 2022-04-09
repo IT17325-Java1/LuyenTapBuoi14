@@ -5,6 +5,7 @@
  */
 package com.poly.service;
 
+import com.poly.entity.ChayAnQua;
 import com.poly.entity.ThucVat;
 import java.util.ArrayList;
 
@@ -31,5 +32,7 @@ public interface ThucVatService {
     ArrayList<ThucVat> displayIndexEven(ArrayList<ThucVat> thucVatList);
 
     void sortByName(ArrayList<ThucVat> thucVatList);
+    
+    void outputCayAnQua(ArrayList<ChayAnQua> chayAnQuas);
 
 }

@@ -5,6 +5,7 @@
  */
 package com.poly;
 
+import com.poly.entity.ChayAnQua;
 import com.poly.entity.ThucVat;
 import com.poly.service.ThucVatService;
 import com.poly.service.impl.ThucVatServiceImpl;
@@ -22,6 +23,7 @@ public class Main {
      */
     public static void main(String[] args) {
         ArrayList<ThucVat> thucVatList = new ArrayList<>();
+        ArrayList<ChayAnQua> chayAnQuasList = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
         ThucVatService thucVatService = new ThucVatServiceImpl();
         int fuction = 0;
@@ -67,21 +69,49 @@ public class Main {
                     break;
                 }
                 case 4: {
-
+                    String ten = "sa";
+                    ArrayList<ThucVat> listFound = thucVatService.searchByNameStartWith(thucVatList, ten);
+                    if (listFound.isEmpty()) {
+                        System.out.println("Không có tên nào bắt đầu bằng từ 'sa'");
+                    } else {
+                        listFound.forEach(s -> System.out.println(s.toString()));
+                    }
                     break;
                 }
-
-                case 5:
+                case 5: {
+                    String ten = "ma";
+                    ArrayList<ThucVat> listFound = thucVatService.searchByNameEndWith(thucVatList, ten);
+                    if (listFound.isEmpty()) {
+                        System.out.println("Không có tên nào bắt đầu bằng từ 'ma'");
+                    } else {
+                        listFound.forEach(s -> System.out.println(s.toString()));
+                    }
                     break;
-                case 6:
+                }
+                case 6: {
+                    System.out.println("Xin mời nhập tên:");
+                    String ten = scanner.nextLine();
+                    ArrayList<ThucVat> litSearch = thucVatService.searchByName(thucVatList, ten);
+                    litSearch.forEach(s -> System.out.println(s.toString()));
                     break;
-                case 7:
+                }
+                case 7: {
+                    ArrayList<ThucVat> litSearch = thucVatService.displayDivide(thucVatList);
+                    litSearch.forEach(s -> System.out.println(s.toString()));
                     break;
-                case 8:
+                }
+                case 8: {
+                    ArrayList<ThucVat> litSearch = thucVatService.displayIndexEven(thucVatList);
+                    litSearch.forEach(s -> System.out.println(s.toString()));
                     break;
-                case 9:
+                }
+                case 9: {
+                    thucVatService.sortByName(thucVatList);
+                    thucVatList.forEach(s -> System.out.println(s.toString()));
                     break;
+                }
                 case 10:
+                    thucVatService.outputCayAnQua(chayAnQuasList);
                     break;
             }
         } while (fuction != 10);

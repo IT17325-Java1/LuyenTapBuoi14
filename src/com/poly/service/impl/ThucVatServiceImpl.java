@@ -5,6 +5,7 @@
  */
 package com.poly.service.impl;
 
+import com.poly.entity.ChayAnQua;
 import com.poly.entity.ThucVat;
 import com.poly.service.ThucVatService;
 import java.util.ArrayList;
@@ -88,7 +89,7 @@ public class ThucVatServiceImpl implements ThucVatService {
     public ArrayList<ThucVat> displayDivide(ArrayList<ThucVat> thucVatList) {
         ArrayList<ThucVat> listSearch = new ArrayList<>();
         for (ThucVat thucVat : thucVatList) {
-            if (thucVat.getCanNang() %8==0) {
+            if (thucVat.getCanNang() % 8 == 0) {
                 listSearch.add(thucVat);
             }
         }
@@ -108,6 +109,11 @@ public class ThucVatServiceImpl implements ThucVatService {
     @Override
     public void sortByName(ArrayList<ThucVat> thucVatList) {
         thucVatList.sort((s1, s2) -> s1.getTen().compareTo(s2.getTen()));
+    }
+
+    @Override
+    public void outputCayAnQua(ArrayList<ChayAnQua> chayAnQuas) {
+        chayAnQuas.forEach(s -> System.out.println(s.toString()));
     }
 
 }
